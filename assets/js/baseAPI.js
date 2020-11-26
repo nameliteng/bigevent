@@ -10,7 +10,7 @@ $.ajaxPrefilter(function (ajaxOpt) {
     }
     //c.
     ajaxOpt.complete = function (res) {
-        console.log(res.responseJSON);
+        // console.log(res.responseJSON);
         if (res.responseJSON.status == 1 && res.responseJSON.message == '身份认证失败！') {
             layer.msg(res.responseJSON.message, {
                 icon: 1,
@@ -18,7 +18,7 @@ $.ajaxPrefilter(function (ajaxOpt) {
             }, function () {
                 //do something
                 localStorage.removeItem('token');
-                location.href = '/login.html';
+                window.top.location.href = '/login.html';
             });
         }
     }
